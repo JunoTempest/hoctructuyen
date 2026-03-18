@@ -32,3 +32,5 @@ File: lib/core/constants/app_constants.dart
 dartstatic const agoraAppId = '8bac8b1b37d44976977cef0e7280e1cb';
 
 Quan trọng: Vào Agora Console → project này → App Certificate → TẮT (để dùng token rỗng). Nếu bật App Certificate thì video call sẽ báo lỗi 101.
+
+# cần cấp quyền video/mic/... cho ios/web/android/windows/... để có thể hoạt động phần mềm này tốt nhất. 
