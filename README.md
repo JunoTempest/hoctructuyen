@@ -26,6 +26,49 @@ lib/core/constants/firebase_options.dart
 
 Lấy file config: Firebase Console → Project Settings → Your apps → Download config file
 
+Firestore Rules
+Copy nội dung sau vào Firebase Console → Firestore → Rules:
+jsrules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    match /users/{userId} {
+      allow read:  if isSignedIn();
+      allow write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+    }
+    match /courses/{courseId} {
+      allow read:  if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /schedules/{scheduleId} {
+      allow read, write: if isSignedIn();
+    }
+    match /bookings/{bookingId} {
+      allow read, write: if isSignedIn();
+    }
+    match /sessions/{sessionId} {
+      allow read, write: if isSignedIn();
+      match /presence/{uid}   { allow read, write: if isSignedIn(); }
+      match /strokes/{strokeId} { allow read, write: if isSignedIn(); }
+      match /messages/{msgId}  { allow read, write: if isSignedIn(); }
+    }
+    match /chats/{chatId} {
+      allow read, write: if isSignedIn();
+      match /messages/{messageId} { allow read, write: if isSignedIn(); }
+    }
+    match /bug_reports/{reportId} {
+      allow read, write: if isSignedIn();
+    }
+  }
+}
+
 
 Cấu hình Agora
 File: lib/core/constants/app_constants.dart
