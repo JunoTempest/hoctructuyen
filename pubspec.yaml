@@ -1,0 +1,49 @@
+name: edu_app
+description: Nền tảng học trực tuyến
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^3.0.3
+  riverpod_annotation: ^3.0.3
+  go_router: ^14.6.2
+  freezed_annotation: ^3.0.0
+  json_annotation: ^4.9.0
+  dio: ^5.7.0
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.4
+  cloud_firestore: ^5.5.0
+  firebase_messaging: ^15.1.5
+  agora_rtc_engine: ^6.5.3
+  permission_handler: ^11.3.1
+  shared_preferences: ^2.3.3
+  flutter_secure_storage: ^9.2.2
+  cached_network_image: ^3.4.1
+  gap: ^3.0.1
+  intl: ^0.19.0
+  google_fonts: ^6.2.1
+  web: ^1.0.0          # Flutter Web interop (cần cho Agora Web SDK)
+  uuid: ^4.5.1
+  http: ^1.2.2          # Gemini AI chat trong classroom
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.13
+  freezed: ^3.0.6
+  json_serializable: ^6.8.0
+  riverpod_generator: ^3.0.3
+  custom_lint: ^0.8.0
+  riverpod_lint: ^3.0.3
+
+flutter:
+  uses-material-design: true
+#  assets:
+#    - assets/images/
+#    - assets/icons/
